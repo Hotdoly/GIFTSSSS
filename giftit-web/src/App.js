@@ -141,7 +141,7 @@ function Cadastro({ adicionarPessoa }) {
       return;
     }
     adicionarPessoa(form);
-    setForm({ nome: '', idade: '', interesses: '', personalidade: '' })
+    setForm({ nome: '', idade: '', interesses: '', personalidade: '' });
     navigate('/'); // volta para home
   };
 
