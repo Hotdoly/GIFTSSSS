@@ -1,0 +1,17 @@
+[
+  {
+    "category": "Livros",
+    "keywords": ["fantasia", "história", "ficção"],
+    "suggestions": ["Box Harry Potter", "Sapiens", "1984 - George Orwell"]
+  },
+  {
+    "category": "Tecnologia",
+    "keywords": ["gadgets", "tech", "smart"],
+    "suggestions": ["Smartwatch", "Echo Dot", "Lâmpada Inteligente"]
+  },
+  {
+    "category": "Relaxamento",
+    "keywords": ["spa", "relaxar", "autocuidado"],
+    "suggestions": ["Kit Spa", "Massajador de pescoço", "Velas aromáticas"]
+  }
+]
