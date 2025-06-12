@@ -103,7 +103,7 @@ function Home({ pessoas }) {
       )}
 
       {pessoas.length > 0 && (
-        <div style={{ marginTop: '3rem' }}>
+        <div style={{ marginTop: '3rem', color: '#ca9ee6'}}>
           <h2>Pessoas cadastradas (clique para gerar presentes):</h2>
           <ul>
             {pessoas.map((p, i) => (
@@ -137,16 +137,18 @@ function Cadastro({ adicionarPessoa }) {
 
   const onSubmit = () => {
     if (!form.nome || !form.personalidade || !form.idade) {
+
       alert('Por favor, preencha Nome, Personalidade e idade');
       return;
     }
     adicionarPessoa(form);
     setForm({ nome: '', idade: '', interesses: '', personalidade: ''});
+
     navigate('/'); // volta para home
   };
 
   return (
-  
+
     <div style={styles.page}>
       <h1 style={styles.title}>Cadastrar Aniversariante</h1>
 
@@ -182,9 +184,7 @@ function Cadastro({ adicionarPessoa }) {
         </select>
 
         <button style={styles.button} onClick={onSubmit}>Adicionar Pessoa</button>
-
         <button style={styles.linkButton } onClick={() => navigate('/')}>
-          Voltar para Início
         </button>
       </div>
     </div>
@@ -210,7 +210,11 @@ export default function App() {
 }
 
 const styles = {
+  fundo: {
+    background: "#303446"
+  },
   page: {
+
     background: '#1e1e2e',
     minHeight: '100vh',
     padding: '3rem 1rem',
@@ -225,6 +229,7 @@ const styles = {
     fontSize: '2.2rem',
     textAlign: 'center',
     color: '#cba6f7',
+
   },
   form: {
     display: 'grid',
