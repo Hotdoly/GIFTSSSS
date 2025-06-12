@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import './index.css'
 
 const perfisPersonalidade = [
   'Aventureiro', 'Criativo', 'Caseiro', 'Intelectual', 'Engraçado', 'Romântico',
@@ -55,9 +56,8 @@ function Home({ pessoas }) {
   };
 
   return (
-    <body style={styles.fundo}>
     <div style={styles.page}>
-      <h1 style={styles.title}>🎁 GiftIt - Escolha um presente</h1>
+      <h1 style={styles.title}>GiftIt - Escolha um presente</h1>
 
       <div style={styles.form}>
         <select
@@ -95,10 +95,11 @@ function Home({ pessoas }) {
           <h2>Sugestões de presentes:</h2>
           <ul>
             {sugestoes.map((s, i) => (
-              <li key={i}>🎁 {s.sugestao}</li>
+              <li key={i}>{s.sugestao}</li>
             ))}
           </ul>
         </div>
+        
       )}
 
       {pessoas.length > 0 && (
@@ -109,7 +110,7 @@ function Home({ pessoas }) {
               <li
                 key={i}
                 onClick={() => selecionarPessoa(p)}
-                style={{ cursor: 'pointer', textDecoration: 'underline', color: '#4a90e2', marginBottom: 6 }}
+                style={{ cursor: 'pointer', textDecoration: 'underline', color: '#99d1db', marginBottom: 6 }}
                 title="Clique para gerar sugestões para essa pessoa"
               >
                 {p.nome} - {p.personalidade}
@@ -119,7 +120,6 @@ function Home({ pessoas }) {
         </div>
       )}
     </div>
-    </body>
   );
 }
 
@@ -130,23 +130,25 @@ function Cadastro({ adicionarPessoa }) {
     nome: '',
     idade: '',
     interesses: '',
-    personalidade: ''
+    personalidade: '',
   });
 
   const navigate = useNavigate();
 
   const onSubmit = () => {
     if (!form.nome || !form.personalidade || !form.idade) {
-      alert('Por favor, preencha Nome, Personalidade e Idade.');
+
+      alert('Por favor, preencha Nome, Personalidade e idade');
       return;
     }
     adicionarPessoa(form);
-    setForm({ nome: '', idade: '', interesses: '', personalidade: '' });
+    setForm({ nome: '', idade: '', interesses: '', personalidade: ''});
+
     navigate('/'); // volta para home
   };
 
   return (
-    <body style={styles.fundo}>
+
     <div style={styles.page}>
       <h1 style={styles.title}>Cadastrar Aniversariante</h1>
 
@@ -182,12 +184,10 @@ function Cadastro({ adicionarPessoa }) {
         </select>
 
         <button style={styles.button} onClick={onSubmit}>Adicionar Pessoa</button>
-        <button style={styles.linkButton} onClick={() => navigate('/')}>
-          Voltar para Início
+        <button style={styles.linkButton } onClick={() => navigate('/')}>
         </button>
       </div>
     </div>
-    </body>
   );
 }
 
@@ -214,11 +214,12 @@ const styles = {
     background: "#303446"
   },
   page: {
-    background: '#414559',
+
+    background: '#1e1e2e',
     minHeight: '100vh',
     padding: '3rem 1rem',
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    color: '#333',
+    color: '#cdd6f4',
     maxWidth: '600px',
     margin: 'auto',
   },
@@ -227,7 +228,8 @@ const styles = {
     fontWeight: '700',
     fontSize: '2.2rem',
     textAlign: 'center',
-    color: '#ca9ee6',
+    color: '#cba6f7',
+
   },
   form: {
     display: 'grid',
@@ -255,9 +257,9 @@ const styles = {
     padding: '0.9rem',
     marginTop: '0.4rem',
     backgroundColor: '#40a02b',
+    border: 'none',
     color: 'white',
     borderRadius: '10px',
-    border: '0px',
     fontWeight: '700',
     cursor: 'pointer',
     textDecoration: 'none',
@@ -266,8 +268,7 @@ const styles = {
   sugestoes: {
     marginTop: '2rem',
     padding: '1rem',
-    backgroundColor: '#8caaee',
+    backgroundColor: '#313244',
     borderRadius: '12px',
-
   },
 };
