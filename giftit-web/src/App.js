@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import './index.css'
 
 const perfisPersonalidade = [
   'Aventureiro', 'Criativo', 'Caseiro', 'Intelectual', 'Engraçado', 'Romântico',
@@ -56,7 +57,7 @@ function Home({ pessoas }) {
 
   return (
     <div style={styles.page}>
-      <h1 style={styles.title}>🎁 GiftIt - Escolha um presente</h1>
+      <h1 style={styles.title}>GiftIt - Escolha um presente</h1>
 
       <div style={styles.form}>
         <select
@@ -94,10 +95,11 @@ function Home({ pessoas }) {
           <h2>Sugestões de presentes:</h2>
           <ul>
             {sugestoes.map((s, i) => (
-              <li key={i}>🎁 {s.sugestao}</li>
+              <li key={i}>{s.sugestao}</li>
             ))}
           </ul>
         </div>
+        
       )}
 
       {pessoas.length > 0 && (
@@ -108,10 +110,10 @@ function Home({ pessoas }) {
               <li
                 key={i}
                 onClick={() => selecionarPessoa(p)}
-                style={{ cursor: 'pointer', textDecoration: 'underline', color: '#4a90e2', marginBottom: 6 }}
+                style={{ cursor: 'pointer', textDecoration: 'underline', color: '#99d1db', marginBottom: 6 }}
                 title="Clique para gerar sugestões para essa pessoa"
               >
-                {p.nome} - {p.personalidade} - Aniversário: {p.aniversario}
+                {p.nome} - {p.personalidade}
               </li>
             ))}
           </ul>
@@ -129,22 +131,22 @@ function Cadastro({ adicionarPessoa }) {
     idade: '',
     interesses: '',
     personalidade: '',
-    aniversario: '',
   });
 
   const navigate = useNavigate();
 
   const onSubmit = () => {
-    if (!form.nome || !form.personalidade || !form.aniversario) {
-      alert('Por favor, preencha Nome, Personalidade e Aniversário.');
+    if (!form.nome || !form.personalidade || !form.idade) {
+      alert('Por favor, preencha Nome, Personalidade e idade');
       return;
     }
     adicionarPessoa(form);
-    setForm({ nome: '', idade: '', interesses: '', personalidade: '', aniversario: '' });
+    setForm({ nome: '', idade: '', interesses: '', personalidade: ''});
     navigate('/'); // volta para home
   };
 
   return (
+  
     <div style={styles.page}>
       <h1 style={styles.title}>Cadastrar Aniversariante</h1>
 
@@ -178,16 +180,10 @@ function Cadastro({ adicionarPessoa }) {
             <option key={p} value={p}>{p}</option>
           ))}
         </select>
-        <input
-          type="date"
-          style={styles.input}
-          value={form.aniversario}
-          onChange={e => setForm({ ...form, aniversario: e.target.value })}
-        />
 
         <button style={styles.button} onClick={onSubmit}>Adicionar Pessoa</button>
 
-        <button style={{ ...styles.button, backgroundColor: '#888' }} onClick={() => navigate('/')}>
+        <button style={styles.linkButton } onClick={() => navigate('/')}>
           Voltar para Início
         </button>
       </div>
@@ -215,11 +211,11 @@ export default function App() {
 
 const styles = {
   page: {
-    background: '#f9fafb',
+    background: '#1e1e2e',
     minHeight: '100vh',
     padding: '3rem 1rem',
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    color: '#333',
+    color: '#cdd6f4',
     maxWidth: '600px',
     margin: 'auto',
   },
@@ -228,7 +224,7 @@ const styles = {
     fontWeight: '700',
     fontSize: '2.2rem',
     textAlign: 'center',
-    color: '#4a90e2',
+    color: '#cba6f7',
   },
   form: {
     display: 'grid',
@@ -239,12 +235,12 @@ const styles = {
     padding: '0.75rem 1rem',
     fontSize: '1rem',
     borderRadius: '10px',
-    border: '1px solid #ccc',
+    border: '1px solid #626880',
     outline: 'none',
   },
   button: {
     padding: '0.9rem',
-    backgroundColor: '#4a90e2',
+    backgroundColor: '#04a5e5',
     color: 'white',
     border: 'none',
     borderRadius: '10px',
@@ -255,7 +251,8 @@ const styles = {
     textAlign: 'center',
     padding: '0.9rem',
     marginTop: '0.4rem',
-    backgroundColor: '#35a854',
+    backgroundColor: '#40a02b',
+    border: 'none',
     color: 'white',
     borderRadius: '10px',
     fontWeight: '700',
@@ -266,8 +263,7 @@ const styles = {
   sugestoes: {
     marginTop: '2rem',
     padding: '1rem',
-    backgroundColor: '#eef6ff',
+    backgroundColor: '#313244',
     borderRadius: '12px',
-    border: '1px solid #4a90e2',
   },
 };
